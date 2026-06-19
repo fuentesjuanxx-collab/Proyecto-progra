@@ -10,11 +10,13 @@ class Tienda:
     def __str__(self):
         return f"{self.nombre}{self.productos}{self.trabajadores}"
     
-    def crear_empleado(self):
+    def crear_trabajador(self):
         contador_de_empleados=0
-        nombre=input("Ingrese el nombre del Empleado")
+        nombre=input("Ingrese el nombre del trabajador")
+        
         for i in self.trabajadores:
             contador_de_empleados+=1
+            
         id_E=contador_de_empleados
         edad=int(input("Ingrese la edad del empleado"))
         correo=input("Ingrese el correo del usuario")
@@ -23,43 +25,5 @@ class Tienda:
         print("Se a agregado Al trabajador N{contador_de_empleados}")
         
         return self.trabajadores
-    
-  
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
