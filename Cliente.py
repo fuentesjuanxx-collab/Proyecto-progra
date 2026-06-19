@@ -1,10 +1,9 @@
-class Cliente:
-    def __init__(self,nombre,tipo_pago):
-        self.nombre=nombre
+class Tipo_de_pago:
+    def __init__(self,tipo_pago):
         self.tipo_pago=tipo_pago
-        self.P
+
     def __str__(self):
-        return f"Nombre:{self.nombre}\n{self.tipo_pago}"
+        return f"{self.tipo_pago}"
 
 
 
