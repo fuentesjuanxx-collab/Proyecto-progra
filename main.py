@@ -12,8 +12,6 @@ while True:
         print("2)Editar Trabajador")
         opc = int(input("Ingrese una opcion"))
         
-        
-        
         break  
     except ValueError:
         print(" Error: Por favor, ingrese un número entero válido.")
@@ -29,7 +27,8 @@ while True:
           print(i)
   elif opc==5:
       break
-
+  else:
+      print("El numero ingresado no esta en la lista de opciones.")
 
 
 
