@@ -24,9 +24,7 @@ class Tienda:
         
         return self.trabajadores
     
-    
-    
-    
+  
     
     
     
