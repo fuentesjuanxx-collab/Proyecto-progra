@@ -1,5 +1,3 @@
-
-
 class Empleado:
     def __init__(self,nombre,id_empleado,edad,correo):
         self.nombre=nombre
