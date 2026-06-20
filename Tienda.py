@@ -1,5 +1,5 @@
 from Empleado import Empleado
-from Cliente import Cliente
+from Cliente import Tipo_de_pago
 import random
 class Tienda:
     def __init__(self,nombre):
@@ -31,24 +31,23 @@ class Tienda:
         
        while True: 
             while True:
-              try:
-                  id_Emp_edi=int(input("Ingrese el id del usuario para editar empleado\n-"))
-                  print("1)Nombre \n 2)Correo \n3)Edad")
-                  break  
-              except ValueError:
-                  
-                  print(" Error: Por favor, ingrese un número entero válido.")
-    
-            if id_Emp_edi==1:
+                for i in range(len(self.empleados)):
+                    id_Emp_edi=verificador_de_enteros()
+                    if id_Emp_edi==self.empleados[i].id_empleado:
+                        opc=verificador_de_enteros()
+                        break
+                #int(input("Ingrese el id del usuario para editar empleado\n-"))
+            if opc==1:
                 for i in range(len(self.empleados)):
                     
                     if id_Emp_edi==self.empleados[i].id_empleado:
                         
-                        print(f"Se a eliminado al empleado {self.empleados[i].nombre}\n")
-                        self.empleados.replace(self.empleados[i])
+                        correo=input(f"Ingrese el correo nuevo para:{self.empleados[i].nombre}\n")
+                        self.empleados.replace(self.empleados[i].correo,correo)
+                        print("Se a editado el correo de {self.empleados[i].nombre}")
                         break 
                 break
-            elif id_Emp_edi==2:
+            elif opc==2:
                 for i in range(len(self.empleados)):
                     
                     if id_Emp_edi==self.empleados[i].id_empleado:
@@ -89,7 +88,7 @@ class Tienda:
         elif tipo_pago ==1:            
             tipo_pago="Credito"
             
-        self.cliente.append(Cliente( tipo_pago))
+        self.cliente.append(Tipo_de_pago( tipo_pago))
         
         return self.Cliente
         
@@ -103,16 +102,16 @@ class Tienda:
         
         
         
-def verificador_de_enteros(opc):       
+def verificador_de_enteros():       
 
     while True:
       try:
-          opc = int(input("Ingrese el un valor numerico"))
+          opc = int(input(""))
           
           break  
       except ValueError:
           print(" Error: Por favor, ingrese un número entero válido.")
-          
+    return opc    
           
           
           

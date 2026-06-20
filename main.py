@@ -10,7 +10,10 @@ while True:
         
         print("1)Crear Trabajador")
         print("2)Editar Trabajador")
-        opc = int(input("Ingrese una opcion"))
+        print("3)Eliminar Trabajador")
+        print("4)Mostrar Trabajadores")
+        print("5)salir")
+        opc = int(input("Ingrese una opcion:"))
         
         break  
     except ValueError:
@@ -19,7 +22,7 @@ while True:
   if opc==1:  
     E1=T1.crear_empleado()
   elif opc==2:
-    T1.Editar()
+    T1.editar_empleado()
   elif opc==3:
     T1.eliminar_empleado()
   elif opc==4:
