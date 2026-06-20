@@ -1,12 +1,13 @@
 from Empleado import Empleado
 from Cliente import Tipo_de_pago
 import random
+
 class Tienda:
     def __init__(self,nombre):
         self.nombre=nombre
         self.productos=[]
         self.empleados=[]
-        self.cliente=[]
+        self.Tipo_de_pago=[]
         
     def __str__(self):
         return f"{self.nombre}{self.productos}{self.trabajadores}\n"
@@ -31,36 +32,30 @@ class Tienda:
         print("Ingrese el id Del usuario para verificar si existe en el sistema") 
 
         while True:
-           for i in range(len(self.empleados)):
-                
+            for i in range(len(self.empleados)):
                 id_Emp_edi=verificador_de_enteros()
                 if id_Emp_edi==self.empleados[i].id_empleado:
                     print("1)Editar correo \n2)Editar edad")
                     opc=verificador_de_enteros()
-                    print(opc)
                     break
-                                   
-           if opc==1:
+                                    
+            if opc==1:
                 for i in range(len(self.empleados)):
-                
                     if id_Emp_edi==self.empleados[i].id_empleado:
-                    
                         correo=input(f"Ingrese el correo nuevo para:{self.empleados[i].nombre}\n")
                         self.empleados[i].correo=correo
                         print(f"Se a editado el correo de {self.empleados[i].nombre}")
                         break 
                 break
-           elif opc==2:
+            elif opc==2:
                 for i in range(len(self.empleados)):
-                
-                   if id_Emp_edi==self.empleados[i].id_empleado:
-                   
-                       edad=input(f"Ingrese la edad nueva para:{self.empleados[i].nombre}\n")
-                       self.empleados[i].edad=edad
-                       print(f"Se a editado la edad de {self.empleados[i].nombre}")
-                       break
+                    if id_Emp_edi==self.empleados[i].id_empleado:
+                        edad=input(f"Ingrese la edad nueva para:{self.empleados[i].nombre}\n")
+                        self.empleados[i].edad=edad
+                        print(f"Se a editado la edad de {self.empleados[i].nombre}")
+                        break
                 break    
-           else:
+            else:
                 print("Opcion invalida")
                 
                
@@ -89,15 +84,13 @@ class Tienda:
         return self.Cliente
         
 def verificador_de_enteros():       
-
     while True:
-      try:
-          opc = int(input("-"))
-          
-          break  
-      except ValueError:
-          print(" Error: Por favor, ingrese un número entero válido.")
-    return opc    
+        try:
+            opc = int(input("-"))
+            break  
+        except ValueError:
+            print(" Error: Por favor, ingrese un número entero válido.")
+    return opc   
           
           
           

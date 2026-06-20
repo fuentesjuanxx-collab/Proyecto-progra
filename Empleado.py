@@ -6,7 +6,7 @@ class Empleado:
         self.correo=correo
         
     def __str__(self):
-        return f"nombre:{self.nombre}-Id:{self.id_empleado}-Edad:{self.edad}-Correo:{self.correo}"
+        return f"Nombre:{self.nombre}\nId:{self.id_empleado}\nEdad:{self.edad}\nCorreo:{self.correo}"
     
     
     
