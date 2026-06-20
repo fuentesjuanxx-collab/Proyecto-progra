@@ -16,8 +16,8 @@ class Tienda:
         nombre=input("Ingrese el nombre del empleado\n-")
                         
         id_E=random.randint(1000,9999)
-        
-        edad=int(input("Ingrese la edad del empleado \n-"))
+        print("Ingrese la edad del empleado \n",end="")
+        edad=verificador_de_enteros()
         correo=input("Ingrese el correo del usuario\n-")
         
         Empleado(nombre, id_E, edad, correo)
@@ -28,39 +28,42 @@ class Tienda:
         return self.empleados
     
     def editar_empleado(self):
-        
-       while True: 
-            while True:
+        print("Ingrese el id Del usuario para verificar si existe en el sistema") 
+
+        while True:
+           for i in range(len(self.empleados)):
+                
+                id_Emp_edi=verificador_de_enteros()
+                if id_Emp_edi==self.empleados[i].id_empleado:
+                    print("1)Editar correo \n2)Editar edad")
+                    opc=verificador_de_enteros()
+                    print(opc)
+                    break
+                                   
+           if opc==1:
                 for i in range(len(self.empleados)):
-                    id_Emp_edi=verificador_de_enteros()
+                
                     if id_Emp_edi==self.empleados[i].id_empleado:
-                        opc=verificador_de_enteros()
-                        break
-                #int(input("Ingrese el id del usuario para editar empleado\n-"))
-            if opc==1:
-                for i in range(len(self.empleados)):
                     
-                    if id_Emp_edi==self.empleados[i].id_empleado:
-                        
                         correo=input(f"Ingrese el correo nuevo para:{self.empleados[i].nombre}\n")
-                        self.empleados.replace(self.empleados[i].correo,correo)
-                        print("Se a editado el correo de {self.empleados[i].nombre}")
+                        self.empleados[i].correo=correo
+                        print(f"Se a editado el correo de {self.empleados[i].nombre}")
                         break 
                 break
-            elif opc==2:
+           elif opc==2:
                 for i in range(len(self.empleados)):
-                    
-                    if id_Emp_edi==self.empleados[i].id_empleado:
-                        
-                        print(f"Se a eliminado al empleado {self.empleados[i].nombre}\n")
-                        self.empleados.replace(self.empleados[i])
-                        break   
-                break
-            
-        
-        
-    
-    
+                
+                   if id_Emp_edi==self.empleados[i].id_empleado:
+                   
+                       edad=input(f"Ingrese la edad nueva para:{self.empleados[i].nombre}\n")
+                       self.empleados[i].edad=edad
+                       print(f"Se a editado la edad de {self.empleados[i].nombre}")
+                       break
+                break    
+           else:
+                print("Opcion invalida")
+                
+               
     def eliminar_empleado(self):
         id_Emp_Elim=int(input("Ingrese el id del usuario para eliminar"))
         for i in range(len(self.empleados)):
@@ -72,15 +75,8 @@ class Tienda:
         return self.empleados
  
     def Crear_pago(self):
-        while True:
-          try:
-              tipo_pago=int(input("Ingrese el tipo de pago \n-1)Efectivo \n-2)Debito \n-3)Credito"))
-              
-              break  
-          except ValueError:
-              print(" Error: Por favor, ingrese un número entero válido.")
-        
-        
+        tipo_pago=verificador_de_enteros()
+        print("1)Efectivo \n2)Debito \n3)Credito")
         if tipo_pago ==1:            
             tipo_pago="Efectivo"
         elif tipo_pago ==1:            
@@ -92,21 +88,11 @@ class Tienda:
         
         return self.Cliente
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
 def verificador_de_enteros():       
 
     while True:
       try:
-          opc = int(input(""))
+          opc = int(input("-"))
           
           break  
       except ValueError:
