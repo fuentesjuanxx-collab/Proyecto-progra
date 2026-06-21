@@ -1,16 +1,30 @@
 from Empleado import Empleado
-from Cliente import Tipo_de_pago
+from Tipo_de_pago import Tipo_de_pago
+from Producto import Producto_Tienda,Producto_venta
 import random
 
 class Tienda:
     def __init__(self,nombre):
         self.nombre=nombre
-        self.productos=[]
+        self.productos_venta=[]
+        self.productos_tienda=[]
         self.empleados=[]
         self.Tipo_de_pago=[]
         
     def __str__(self):
         return f"{self.nombre}{self.productos}{self.trabajadores}\n"
+    def llenar_stock_ventas(self):
+        self.productos_venta.append(Producto_venta("nombre",random.randint(1000,9999), valor, stock))
+        self.productos_venta.append(Producto_venta("nombre",random.randint(1000,9999), valor, stock))
+        self.productos_venta.append(Producto_venta("nombre",random.randint(1000,9999), valor, stock))
+        self.productos_venta.append(Producto_venta("nombre",random.randint(1000,9999), valor, stock))
+        self.productos_venta.append(Producto_venta("nombre",random.randint(1000,9999), valor, stock))
+        return self.productos_venta
+    
+    
+    
+    
+    
     
     def crear_empleado(self):
         contador_de_trabajador=1
@@ -57,8 +71,7 @@ class Tienda:
                 break    
             else:
                 print("Opcion invalida")
-                
-               
+                              
     def eliminar_empleado(self):
         id_Emp_Elim=int(input("Ingrese el id del usuario para eliminar"))
         for i in range(len(self.empleados)):
@@ -82,6 +95,17 @@ class Tienda:
         self.cliente.append(Tipo_de_pago( tipo_pago))
         
         return self.Cliente
+    """
+    def agregar_producto(self):
+        nombre = str(input("Ingrese el nombre del producto: "))
+        stock = int(input("Ingrese el stock del producto: "))
+        valor = int(input("Ingrese el valor del producto: "))
+        id_producto = int(input("Ingrese el ID del producto: "))
+    """
+
+
+
+
         
 def verificador_de_enteros():       
     while True:
