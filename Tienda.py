@@ -59,17 +59,14 @@ class Tienda:
                                 print("Ya no queda stock de este producto, porfavor reponer")
                                 
                                 break
-                            
-                            elif id_prod_b==self.productos_venta[i].id_producto:
-                                
+                            else:
                                 total_boleta+=self.productos_venta[i].valor
                                 self.productos_venta[i].stock-=1
                                 productos.append(self.productos_venta[i].nombre)
                                 print(f"La boleta lleva {total_boleta}")
                                 
                                 break
-                            else:
-                                print("El id ingresado no esta en sistema")
+
   
                 elif opc_b==2:
                     return Boleta(vendedor, productos,total_boleta) 
