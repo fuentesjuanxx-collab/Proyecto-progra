@@ -35,6 +35,9 @@ while True:
   elif opc==5:
       print("A salido del programa...")
       break
+  elif opc==6:
+      T1.llenar_stock_tienda()
+      T1.llenar_stock_ventas()
   else:
       print("El numero ingresado no esta en la lista de opciones.")
 
