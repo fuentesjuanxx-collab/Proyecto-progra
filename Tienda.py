@@ -1,7 +1,6 @@
 from Empleado import Empleado
-from Tipo_de_pago import Tipo_de_pago
-from Producto import Producto_Tienda,Producto_venta
 from Tipo_de_pago import Boleta
+from Producto import Producto_Tienda,Producto_venta
 import random
 
 class Tienda:
@@ -16,10 +15,10 @@ class Tienda:
         return f"{self.nombre}{self.productos}{self.trabajadores}\n"
     def llenar_stock_ventas(self):
         self.productos_venta.append(Producto_venta("S229",2727,"Parlante", "Lenyes", 14990,4))
-        self.productos_venta.append(Producto_venta("Tune 770 NC", 1919,"Audifono", "JBL", 59990, 6))
-        self.productos_venta.append(Producto_venta("G203", 4646,"Mause", "logitec", 24990, 12))
-        self.productos_venta.append(Producto_venta("Wave buds", 3131,"audifonos","JBL", 44.990,8))
-        self.productos_venta.append(Producto_venta("Watch 5 active", 8282,"SmartWatch", "Xiaomi/Redmi", 34990, 10))
+        self.productos_venta.append(Producto_venta("Tune 770 NC",1919,"Audifono", "JBL", 59990, 6))
+        self.productos_venta.append(Producto_venta("G203",4646,"Mause", "logitec", 24990, 12))
+        self.productos_venta.append(Producto_venta("Wave buds",3131,"audifonos","JBL", 44.990,8))
+        self.productos_venta.append(Producto_venta("Watch 5 active",8282,"SmartWatch", "Xiaomi/Redmi", 34990, 10))
         return self.productos_venta
     def llenar_stock_tienda(self):
         self.productos_tienda.append(Producto_Tienda("Escoba", 1, 20))
@@ -30,32 +29,62 @@ class Tienda:
         return self.productos_tienda
     def crear_boleta(self):
         total_boleta=0
+        productos=[]
+        encotrado=False
         while True:
-            
-            for i in range(len(self.empleados)):
-                print("Ingrese su id para ingresar su venta")
-                id_Emp_b=verificador_de_enteros()
-                if id_Emp_b==self.empleados[i].id_empleado:
-                    print("Se a ingresado con {self.empleados[i].nombre}")
-                    vendedor=self.empleados[i].nombre
+            while True:
+                for i in range(len(self.empleados)):
+                    print("Ingrese su id para ingresar su venta")
+                    id_Emp_b=verificador_de_enteros()
+                    if id_Emp_b==self.empleados[i].id_empleado:
+                        print(f"Se a ingresado con {self.empleados[i].nombre}")
+                        vendedor=self.empleados[i].nombre
+                        encotrado=True
+                        break
+                    else:
+                        print("id invalido")
+                if encotrado:
                     break
+                    
             while True:
                 print("1) Ingresar producto \n 2)Terminar boleta \n-",end="")
                 opc_b=verificador_de_enteros()
                 if opc_b==1:
-                    for i in range(len(self.boletas)):
+                    for i in range(len(self.productos_venta)):
                         print("Ingrese el id del producto ")
                         id_prod_b=verificador_de_enteros()
-                        if id_prod_b==self.boletas[i].id_producto:
-                            total_boleta+=self.boletas[i].valor
-                            print("La boleta lleva {total_boleta}")
-                            break
+                        
+                        if id_prod_b==self.productos_venta[i].id_producto:
+                            if self.productos_venta[i].stock<1:
+                                print("Ya no queda stock de este producto, porfavor reponer")
+                                
+                                break
+                            
+                            elif id_prod_b==self.productos_venta[i].id_producto:
+                                
+                                total_boleta+=self.productos_venta[i].valor
+                                self.productos_venta[i].stock-=1
+                                productos.append(self.productos_venta[i].nombre)
+                                print(f"La boleta lleva {total_boleta}")
+                                
+                                break
+                            else:
+                                print("El id ingresado no esta en sistema")
+  
                 elif opc_b==2:
+                    return Boleta(vendedor, productos,total_boleta) 
                     break
-            
-            
-            
-    
+                else:
+                    print("La opcion ingresada no es valida")
+     
+               
+    def mostrar_boleta(self):
+        for i in range(len(self.boletas)):
+            print(self.boletas[i])
+    def mostrar_productos_B(self):
+        for i in range(len(self.productos_venta)):
+            print(self.productos_venta[i])
+        
     
     def crear_empleado(self):
         
@@ -116,19 +145,7 @@ class Tienda:
         
         return self.empleados
  
-    def Crear_pago(self):
-        tipo_pago=verificador_de_enteros()
-        print("1)Efectivo \n2)Debito \n3)Credito")
-        if tipo_pago ==1:            
-            tipo_pago="Efectivo"
-        elif tipo_pago ==1:            
-            tipo_pago="Debito"
-        elif tipo_pago ==1:            
-            tipo_pago="Credito"
-            
-        self.cliente.append(Tipo_de_pago( tipo_pago))
-        
-        return self.Cliente
+
 
 
 
